@@ -21,40 +21,54 @@ import java.util.Map;
  * Date 2018-9-4
  * Time 20:40
  */
-public class StudentMapperTest {
+public class StudentMapperTest
+{
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeClass
-    public static void init() {
-        try {
+    public static void init()
+    {
+        try
+        {
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void testSelectList() {
+    public void testSelectList()
+    {
         SqlSession sqlSession = null;
-        try {
+        try
+        {
             sqlSession = sqlSessionFactory.openSession();
 
             List<Student> students = sqlSession.selectList("selectAll");
-            for (int i = 0; i < students.size(); i++) {
+            for (int i = 0; i < students.size(); i++)
+            {
                 System.out.println(students.get(i));
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
-            if (sqlSession != null) {
+        }
+        finally
+        {
+            if (sqlSession != null)
+            {
                 sqlSession.close();
             }
         }
     }
 
     @Test
-    public void testSelectBtweenCreatedTimeMap() {
+    public void testSelectBtweenCreatedTimeMap()
+    {
 
         Map<String, Object> params = new HashMap<>();
         Calendar bTime = Calendar.getInstance();
@@ -63,21 +77,28 @@ public class StudentMapperTest {
         params.put("bTime", bTime.getTime());
 
         Calendar eTime = Calendar.getInstance();
-        eTime.set(2018,Calendar.SEPTEMBER,2);
+        eTime.set(2018, Calendar.SEPTEMBER, 2);
         params.put("eTime", eTime.getTime());
         SqlSession sqlSession = null;
-        try {
+        try
+        {
             sqlSession = sqlSessionFactory.openSession();
 
             StudentMapper studentMapper = (StudentMapper) sqlSession.getMapper(StudentMapper.class);
             List<Student> students = studentMapper.selectBetweenCreatedTime(params);
-            for (int i = 0; i < students.size(); i++) {
+            for (int i = 0; i < students.size(); i++)
+            {
                 System.out.println(students.get(i));
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
-            if (sqlSession != null) {
+        }
+        finally
+        {
+            if (sqlSession != null)
+            {
                 sqlSession.close();
             }
         }
@@ -85,7 +106,8 @@ public class StudentMapperTest {
     }
 
     @Test
-    public void testSelectBtweenCreatedTimeAnno() {
+    public void testSelectBtweenCreatedTimeAnno()
+    {
 
         Map<String, Object> params = new HashMap<>();
         Calendar bTime = Calendar.getInstance();
@@ -94,21 +116,28 @@ public class StudentMapperTest {
 
 
         Calendar eTime = Calendar.getInstance();
-        eTime.set(2018,Calendar.SEPTEMBER,2);
+        eTime.set(2018, Calendar.SEPTEMBER, 2);
 
         SqlSession sqlSession = null;
-        try {
+        try
+        {
             sqlSession = sqlSessionFactory.openSession();
 
             StudentMapper studentMapper = (StudentMapper) sqlSession.getMapper(StudentMapper.class);
             List<Student> students = studentMapper.selectBetweenCreatedTimeAnno(bTime.getTime(), eTime.getTime());
-            for (int i = 0; i < students.size(); i++) {
+            for (int i = 0; i < students.size(); i++)
+            {
                 System.out.println(students.get(i));
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
-            if (sqlSession != null) {
+        }
+        finally
+        {
+            if (sqlSession != null)
+            {
                 sqlSession.close();
             }
         }

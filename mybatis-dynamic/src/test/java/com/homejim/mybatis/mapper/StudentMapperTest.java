@@ -21,21 +21,27 @@ import java.util.*;
  * Date 2018-9-4
  * Time 20:40
  */
-public class StudentMapperTest {
+public class StudentMapperTest
+{
     private static SqlSessionFactory sqlSessionFactory;
 
     @BeforeClass
-    public static void init() {
-        try {
+    public static void init()
+    {
+        try
+        {
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void selectByStudent() {
+    public void selectByStudent()
+    {
         SqlSession sqlSession = null;
         sqlSession = sqlSessionFactory.openSession();
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
@@ -45,7 +51,8 @@ public class StudentMapperTest {
 
         System.out.println("只有名字时的查询");
         List<Student> studentsByName = studentMapper.selectByStudentSelective(search);
-        for (int i = 0; i < studentsByName.size(); i++) {
+        for (int i = 0; i < studentsByName.size(); i++)
+        {
             System.out.println(ToStringBuilder.reflectionToString(studentsByName.get(i), ToStringStyle.MULTI_LINE_STYLE));
         }
 
@@ -53,14 +60,16 @@ public class StudentMapperTest {
         search.setSex((byte) 1);
         System.out.println("只有性别时的查询");
         List<Student> studentsBySex = studentMapper.selectByStudentSelective(search);
-        for (int i = 0; i < studentsBySex.size(); i++) {
+        for (int i = 0; i < studentsBySex.size(); i++)
+        {
             System.out.println(ToStringBuilder.reflectionToString(studentsBySex.get(i), ToStringStyle.MULTI_LINE_STYLE));
         }
 
         System.out.println("姓名和性别同时存在的查询");
         search.setName("明");
         List<Student> studentsByNameAndSex = studentMapper.selectByStudentSelective(search);
-        for (int i = 0; i < studentsByNameAndSex.size(); i++) {
+        for (int i = 0; i < studentsByNameAndSex.size(); i++)
+        {
             System.out.println(ToStringBuilder.reflectionToString(studentsByNameAndSex.get(i), ToStringStyle.MULTI_LINE_STYLE));
         }
 
@@ -69,7 +78,8 @@ public class StudentMapperTest {
     }
 
     @Test
-    public void updateByStudentSelective() {
+    public void updateByStudentSelective()
+    {
         SqlSession sqlSession = null;
         sqlSession = sqlSessionFactory.openSession();
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
@@ -86,7 +96,8 @@ public class StudentMapperTest {
 
 
     @Test
-    public void insertByStudentSelective() {
+    public void insertByStudentSelective()
+    {
         SqlSession sqlSession = null;
         sqlSession = sqlSessionFactory.openSession();
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
@@ -104,7 +115,8 @@ public class StudentMapperTest {
     }
 
     @Test
-    public void selectByIdOrName() {
+    public void selectByIdOrName()
+    {
         SqlSession sqlSession = null;
         sqlSession = sqlSessionFactory.openSession();
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
@@ -132,7 +144,8 @@ public class StudentMapperTest {
     }
 
     @Test
-    public void selectByStudentWhereTag() {
+    public void selectByStudentWhereTag()
+    {
         SqlSession sqlSession = null;
         sqlSession = sqlSessionFactory.openSession();
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
@@ -142,14 +155,16 @@ public class StudentMapperTest {
 
         System.out.println("只有名字时的查询");
         List<Student> studentsByName = studentMapper.selectByStudentSelectiveWhereTag(search);
-        for (int i = 0; i < studentsByName.size(); i++) {
+        for (int i = 0; i < studentsByName.size(); i++)
+        {
             System.out.println(ToStringBuilder.reflectionToString(studentsByName.get(i), ToStringStyle.MULTI_LINE_STYLE));
         }
 
         search.setSex((byte) 1);
         System.out.println("姓名和性别同时存在的查询");
         List<Student> studentsBySex = studentMapper.selectByStudentSelectiveWhereTag(search);
-        for (int i = 0; i < studentsBySex.size(); i++) {
+        for (int i = 0; i < studentsBySex.size(); i++)
+        {
             System.out.println(ToStringBuilder.reflectionToString(studentsBySex.get(i), ToStringStyle.MULTI_LINE_STYLE));
         }
 
@@ -157,7 +172,8 @@ public class StudentMapperTest {
         search.setName(null);
         search.setSex(null);
         List<Student> studentsByNameAndSex = studentMapper.selectByStudentSelectiveWhereTag(search);
-        for (int i = 0; i < studentsByNameAndSex.size(); i++) {
+        for (int i = 0; i < studentsByNameAndSex.size(); i++)
+        {
             System.out.println(ToStringBuilder.reflectionToString(studentsByNameAndSex.get(i), ToStringStyle.MULTI_LINE_STYLE));
         }
 
@@ -166,7 +182,8 @@ public class StudentMapperTest {
     }
 
     @Test
-    public void selectByStudentIdList() {
+    public void selectByStudentIdList()
+    {
         SqlSession sqlSession = null;
         sqlSession = sqlSessionFactory.openSession();
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
@@ -176,7 +193,8 @@ public class StudentMapperTest {
         ids.add(3);
 
         List<Student> students = studentMapper.selectByStudentIdList(ids);
-        for (int i = 0; i < students.size(); i++) {
+        for (int i = 0; i < students.size(); i++)
+        {
             System.out.println(ToStringBuilder.reflectionToString(students.get(i), ToStringStyle.MULTI_LINE_STYLE));
         }
 
@@ -185,7 +203,8 @@ public class StudentMapperTest {
     }
 
     @Test
-    public void insertList() {
+    public void insertList()
+    {
         SqlSession sqlSession = null;
         sqlSession = sqlSessionFactory.openSession();
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);

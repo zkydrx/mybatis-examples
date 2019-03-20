@@ -97,7 +97,7 @@
         student_id,
       </if>
       <if test="name != null">
-        `name`,
+        name,
       </if>
       <if test="phone != null">
         phone,
@@ -159,7 +159,7 @@
     update student
     <set>
       <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
