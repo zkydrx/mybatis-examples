@@ -21,3 +21,16 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.idea/workspace.xml
+helloMybatis/target/classes/com/homejim/mybatis/mapper/StudentMapper.xml
+helloMybatis/target/classes/jdbc.properties
+helloMybatis/target/classes/log4j.properties
+helloMybatis/target/classes/mybatis-config.xml
+helloMybatis/target/generated-sources/
+helloMybatis/target/generated-test-sources/
+mybatis-cache/target/generated-sources/
+mybatis-cache/target/generated-test-sources/
+mybatis-dynamic/target/generated-sources/
+mybatis-dynamic/target/generated-test-sources/
+.idea
+.iml
