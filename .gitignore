@@ -33,4 +33,4 @@ mybatis-cache/target/generated-test-sources/
 mybatis-dynamic/target/generated-sources/
 mybatis-dynamic/target/generated-test-sources/
 .idea
-.iml
+*.iml
